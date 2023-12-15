@@ -1,0 +1,8 @@
+Satte upp lite fler moduler.
+
+config.js = Känns naturligt att lägga kopplandet för sig självt.
+find.js = delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.
+insert.js = delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.
+remove.js = delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.
+update.js = delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.
+

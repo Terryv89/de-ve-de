@@ -1,0 +1,64 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#enterDetails {
+  background-color: lightblue;
+  color: black;
+  padding: 20px;
+}
+
+#findDetails {
+  background-color: lightcyan;
+  color: darkslategray;
+  padding: 20px;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+  margin: 6px 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 125px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#enterWatched {
+  margin-right: 5px;
+  width: 15px;
+}
+
+#watchedCheckbox {
+  margin-right: 5px;
+
+  width: 15px;
+}
+
+#findWatched {
+  margin-top: 10px;
+}
+
+label {
+  font-size: 16px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-top: 10px;
+}
+
+#findTitle,
+#findGenre,
+#findReleaseDate,
+#findWatched {
+  margin-top: 15px;
+}
