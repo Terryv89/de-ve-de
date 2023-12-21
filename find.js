@@ -2,6 +2,7 @@ import {
   get,
   ref,
   child,
+  update as updateDatabase,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { db } from "./index.js";
 
@@ -25,7 +26,6 @@ export function FindData(findTitle) {
         watchedCheckbox.type = "checkbox";
         watchedCheckbox.id = "watchedCheckbox";
         watchedCheckbox.checked = snapshot.val().watched || false;
-        watchedCheckbox.disabled = true;
 
         const watchedLabel = document.createElement("label");
         watchedLabel.htmlFor = "watchedCheckbox";
@@ -34,8 +34,20 @@ export function FindData(findTitle) {
         findWatchedElement.innerHTML = "";
         findWatchedElement.appendChild(watchedCheckbox);
         findWatchedElement.appendChild(watchedLabel);
+
+        watchedCheckbox.addEventListener("change", () => {
+          updateDatabase(ref(db, "Movies/" + findTitle), {
+            watched: watchedCheckbox.checked,
+          })
+            .then(() => {
+              alert("Watched status updated successfully!");
+            })
+            .catch((error) => {
+              alert(error);
+            });
+        });
       } else {
-        alert("that movie does not exist in the db");
+        alert("That movie does not exist in the database");
       }
     })
     .catch((error) => {
