@@ -4,6 +4,7 @@ import {
   child,
   update as updateDatabase,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
 import { db } from "./index.js";
 
 export function FindData(findTitle) {
@@ -20,7 +21,7 @@ export function FindData(findTitle) {
         findTitleElement.innerHTML = "Name: " + snapshot.val().Title;
         findGenreElement.innerHTML = "Genre: " + snapshot.val().Genre;
         findReleaseDateElement.innerHTML =
-          "ReleaseDate: " + snapshot.val().Releasedate;
+          "Release year: " + snapshot.val().Releasedate;
 
         const watchedCheckbox = document.createElement("input");
         watchedCheckbox.type = "checkbox";
@@ -54,3 +55,46 @@ export function FindData(findTitle) {
       alert(error);
     });
 }
+
+export function ShowAllMovies() {
+  const moviesListElement = document.getElementById("moviesList");
+  moviesListElement.innerHTML = "";
+
+  get(ref(db, "Movies"))
+    .then((snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const movieData = childSnapshot.val();
+
+        const listItem = document.createElement("li");
+
+        const titleElement = document.createElement("span");
+        titleElement.textContent = `Title: ${movieData.Title}, Genre: ${movieData.Genre}, Release year: ${movieData.Releasedate}, Watched: `;
+
+        const watchedCheckbox = document.createElement("input");
+        watchedCheckbox.type = "checkbox";
+        watchedCheckbox.checked = movieData.watched || false;
+
+        listItem.appendChild(titleElement);
+        listItem.appendChild(watchedCheckbox);
+
+        moviesListElement.appendChild(listItem);
+
+        watchedCheckbox.addEventListener("change", () => {
+          updateDatabase(ref(db, `Movies/${movieData.Title}`), {
+            watched: watchedCheckbox.checked,
+          })
+            .then(() => {
+              alert("Watched status updated successfully!");
+            })
+            .catch((error) => {
+              alert(error);
+            });
+        });
+      });
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+// delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.

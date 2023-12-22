@@ -62,3 +62,15 @@ h4 {
 #findWatched {
   margin-top: 15px;
 }
+
+#showAllMovies {
+  background-color: burlywood;
+}
+
+li input {
+  margin-right: 10px;
+  width: auto;
+}
+ul {
+  list-style-position: inside;
+}

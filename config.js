@@ -12,3 +12,5 @@ export const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+
+//Känns naturligt att lägga kopplandet för sig självt så slipper de blandas med resten av koden

@@ -4,7 +4,7 @@ import { firebaseConfig, app } from "./config.js";
 import { InsertData } from "./insert.js";
 import { UpdateData } from "./update.js";
 import { RemoveData } from "./remove.js";
-import { FindData } from "./find.js";
+import { FindData, ShowAllMovies } from "./find.js";
 
 export const db = getDatabase();
 
@@ -21,6 +21,7 @@ let insertBtn = document.querySelector("#insert");
 let updateBtn = document.querySelector("#update");
 let removeBtn = document.querySelector("#remove");
 let findBtn = document.querySelector("#find");
+let showAllBtn = document.querySelector("#showAllBtn");
 
 insertBtn.addEventListener("click", () =>
   InsertData(
@@ -38,5 +39,9 @@ updateBtn.addEventListener("click", () =>
     enterWatched
   )
 );
+
+showAllBtn.addEventListener("click", ShowAllMovies);
 removeBtn.addEventListener("click", () => RemoveData(enterTitle.value));
 findBtn.addEventListener("click", () => FindData(findTitles.value));
+
+// delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.

@@ -11,8 +11,8 @@ export function UpdateData(
   enterWatched
 ) {
   update(ref(db, "Movies/" + enterTitle), {
-    Title: enterGenre,
-    Genre: enterTitle,
+    Title: enterTitle,
+    Genre: enterGenre,
     Releasedate: enterReleaseDate,
     watched: enterWatched.checked,
   })
@@ -23,3 +23,5 @@ export function UpdateData(
       alert(error);
     });
 }
+
+// delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.

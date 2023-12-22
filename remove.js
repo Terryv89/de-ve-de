@@ -13,3 +13,5 @@ export function RemoveData(enterTitle) {
       alert(error);
     });
 }
+
+// delade upp funktionerna. Kan se att de blir lättare för felsökande och lättare om man ska bygga vidare på funktionerna.
